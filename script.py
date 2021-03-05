@@ -32,18 +32,18 @@ def updated_damages(list_damages):
     else: damages_not_recorded.append('Damages not recorded')
   return damages_not_recorded
 damages = updated_damages(damages)
-print(damages)
+#print(damages)
 # write your construct hurricane dictionary function here:
 #function
-def hurricane(names, months, years, max_sustained_winds, areas_affected, damages, deaths):
+def hurricanes_list(names, months, years, max_sustained_winds, areas_affected, damages, deaths):
   new_dictionary = {}  
   index = 0
   for items in names:
     new_dictionary[items] = ({"Name": names[index], "Month": months[index], "Year": years[index], "Max Sustained Wind": max_sustained_winds[index], "Areas Affected": areas_affected[index], "Damage": damages[index], "Deaths": deaths[index] })
     index = index + 1
   return new_dictionary
-print(hurricane(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
-
+#print(hurricane(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
+hurricanes = hurricanes_list(names, months, years, max_sustained_winds, areas_affected, damages, deaths)
 #loop + .update()
 
 i = 0
@@ -55,22 +55,39 @@ for items in names:
 #print(new_dictionary2)
 
 # write your construct hurricane by year dictionary function here:
+#function
+def hurricanes_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths):
+  current_year = {}  
+  index = 0
+  for items in years:
+    current_year[items] = ({"Name": names[index], "Month": months[index], "Year": years[index], "Max Sustained Wind": max_sustained_winds[index], "Areas Affected": areas_affected[index], "Damage": damages[index], "Deaths": deaths[index] })
+    index = index + 1
+  return current_year
+
+#print(hurricanes_year(names, months, years, max_sustained_winds, areas_affected, damages, deaths))
+
+#loop + .update()
 i = 0
 new_dictionary_year = {}
 for items in names:
   new_dictionary_year.update({years[i]:{"Name": names[i], "Month": months[i], "Year": years[i], "Max Sustained Wind": max_sustained_winds[i], "Areas Affected": areas_affected[i], "Damage": damages[i], "Deaths": deaths[i] }})
   i = i + 1
 
-print(new_dictionary_year)
-
-
-
-
-
+#print(new_dictionary_year)
 
 # write your count affected areas function here:
-
-
+def count_affected_areas():
+  affected_areas_list = {}
+  for hurricane in hurricanes.values():
+    for area in hurricane["Areas Affected"]:
+      if area in affected_areas_list.keys():
+        affected_areas_list[area] += 1 
+      else:
+        affected_areas_list[area]=1
+        
+  return affected_areas_list
+print(count_affected_areas())
+affected_areas_dictionary = count_affected_areas()
 
 
 
