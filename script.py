@@ -86,22 +86,53 @@ def count_affected_areas():
         affected_areas_list[area]=1
         
   return affected_areas_list
-print(count_affected_areas())
+#print(count_affected_areas())
 affected_areas_dictionary = count_affected_areas()
 
-
-
-
-
 # write your find most affected area function here:
+#option 1
+def max_hurricane_count():
+    return max(affected_areas_dictionary,key=affected_areas_dictionary.get) 
+max_hurricane_count_key = max_hurricane_count()
+    
+def max_hurricane_count1():    
+    all_values = affected_areas_dictionary.values()
+    return max(all_values)
+max_hurricane_count_value = max_hurricane_count1()
 
+affected_areas_count = {}
+affected_areas_count[max_hurricane_count_key] = max_hurricane_count_value
 
+#print(affected_areas_count)
 
+#option2
+def max_affected_area():
+  most_affected_area = {}
+  max_hit = 0
+  max_area = ""
+  for key, value in affected_areas_dictionary.items():
+    if value > max_hit:
+      max_hit = value
+      max_area = key
+      most_affected_area[max_area] = max_hit
+  return most_affected_area
 
+most_affected_area_dict = max_affected_area()
 
-
+#print(max_affected_area())
+#print(most_affected_area_dict)
 
 # write your greatest number of deaths function here:
+hurricane_mortality = {key:value for key, value in zip(names, deaths)}
+print(hurricane_mortality)
+def max_mortality_count():
+  max_mortality = {}
+  max_mortality_key = max(hurricane_mortality,key=hurricane_mortality.get) 
+  max_mortality_value = max(hurricane_mortality.values())
+  max_mortality[max_mortality_key] = max_mortality_value
+  return max_mortality
+
+print(max_mortality_count())
 
 
 
