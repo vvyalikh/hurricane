@@ -135,12 +135,36 @@ def max_mortality_count():
 print(max_mortality_count())
 
 
-
-
-
-
-
 # write your catgeorize by mortality function here:
+def rating_by_mortality():
+  mortality = {}
+  for hurricane in hurricanes.keys():
+    if hurricanes[hurricane]["Deaths"] == 0:
+      mortality[hurricane] = 0
+    elif hurricanes[hurricane]["Deaths"]<100:
+      mortality[hurricane] = "Category 1"
+    elif hurricanes[hurricane]["Deaths"]<500:
+      mortality[hurricane] = "Category 2"
+    elif hurricanes[hurricane]["Deaths"]<1000:
+      mortality[hurricane] = "Category 3"
+    elif hurricanes[hurricane]["Deaths"]<10000:
+      mortality[hurricane] = "Category 4"
+    else:
+      mortality[hurricane] = "Category 5"
+  return mortality
+
+mortality_dictionary = rating_by_mortality()
+print(mortality_dictionary)
+
+hurricanes_by_mortality = {0:[],"Category 1":[],'Category 2':[],'Category 3':[],'Category 4':[],'Category 5':[]}
+
+hurricanes_by_mortality['Category 1'] = [k for k,v in mortality_dictionary.items() if v == 'Category 1']
+hurricanes_by_mortality['Category 2'] = [k for k,v in mortality_dictionary.items() if v == 'Category 2']
+hurricanes_by_mortality['Category 3'] = [k for k,v in mortality_dictionary.items() if v == 'Category 3']
+hurricanes_by_mortality['Category 4'] = [k for k,v in mortality_dictionary.items() if v == 'Category 4']
+hurricanes_by_mortality['Category 5'] = [k for k,v in mortality_dictionary.items() if v == 'Category 5']
+
+print(hurricanes_by_mortality)
 
 
 
