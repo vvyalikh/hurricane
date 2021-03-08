@@ -132,7 +132,7 @@ def max_mortality_count():
   max_mortality[max_mortality_key] = max_mortality_value
   return max_mortality
 
-print(max_mortality_count())
+#print(max_mortality_count())
 
 
 # write your catgeorize by mortality function here:
@@ -154,7 +154,7 @@ def rating_by_mortality():
   return mortality
 
 mortality_dictionary = rating_by_mortality()
-print(mortality_dictionary)
+#print(mortality_dictionary)
 
 hurricanes_by_mortality = {0:[],"Category 1":[],'Category 2':[],'Category 3':[],'Category 4':[],'Category 5':[]}
 
@@ -164,20 +164,35 @@ hurricanes_by_mortality['Category 3'] = [k for k,v in mortality_dictionary.items
 hurricanes_by_mortality['Category 4'] = [k for k,v in mortality_dictionary.items() if v == 'Category 4']
 hurricanes_by_mortality['Category 5'] = [k for k,v in mortality_dictionary.items() if v == 'Category 5']
 
-print(hurricanes_by_mortality)
-
-
-
-
-
-
+#print(hurricanes_by_mortality)
 
 # write your greatest damage function here:
 
+all_damages = []
+for item in damages:
+  try:
+    type(item) == float
+    all_damages.append(int(item))
+  except ValueError:
+    all_damages.append(0)
+#print(all_damages)
 
+hurricane_damages = {key:value for key, value in zip(names, all_damages)}
+#print(hurricane_damages)
 
+def max_hurricane_damage():
+    return max(hurricane_damages,key=hurricane_damages.get) 
+max_hurricane_damages_count_key = max_hurricane_damage()
+    
+def max_hurricane_damages1():    
+    all_values = hurricane_damages.values()
+    return max(all_values)
+max_hurricane_damage_count_value = max_hurricane_damages1()
 
+max_damages_count = {}
+max_damages_count[max_hurricane_damages_count_key] = max_hurricane_damage_count_value
 
+print(max_damages_count)
 
 
 # write your catgeorize by damage function here:
