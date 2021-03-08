@@ -136,6 +136,11 @@ def max_mortality_count():
 
 
 # write your catgeorize by mortality function here:
+mortality_scale = {0: 0,
+                   1: 100,
+                   2: 500,
+                   3: 1000,
+                   4: 10000}
 def rating_by_mortality():
   mortality = {}
   for hurricane in hurricanes.keys():
@@ -192,7 +197,28 @@ max_hurricane_damage_count_value = max_hurricane_damages1()
 max_damages_count = {}
 max_damages_count[max_hurricane_damages_count_key] = max_hurricane_damage_count_value
 
-print(max_damages_count)
+#print(max_damages_count)
 
 
 # write your catgeorize by damage function here:
+damage_scale = {0: 0,
+                1: 100000000,
+                2: 1000000000,
+                3: 10000000000,
+                4: 50000000000}
+def rating_by_damages():
+  hurricanes_by_damages = {0:[],1:[],2:[],3:[],4:[]}
+  for keys,damages in hurricane_damages.items():
+    if damages == 0:
+      hurricanes_by_damages[0].append(keys)
+    elif damages <= 100000000:
+      hurricanes_by_damages[1].append(keys)
+    elif damages <= 1000000000:
+      hurricanes_by_damages[2].append(keys)
+    elif damages <= 10000000000:
+      hurricanes_by_damages[3].append(keys)
+    else:
+      hurricanes_by_damages[4].append(keys)
+  return hurricanes_by_damages
+    
+print(rating_by_damages())
